@@ -19,7 +19,7 @@ namespace QuickJournal
 
         public ICommand AddEntryCommand { get; private set; }
 
-        public ICommand NukeAllCommand { get; private set; }
+        public ICommand ClearAllCommand { get; private set; }
 
         public ICommand DeleteEntryCommand { get; private set; }
 
@@ -33,7 +33,7 @@ namespace QuickJournal
 
             AddEntryCommand = new Command(AddEntry);
             DeleteEntryCommand = new Command<JournalEntry>(DeleteEntry);
-            NukeAllCommand = new Command(NukeAll);
+            ClearAllCommand = new Command(ClearAll);
         }
 
         private void AddEntry()
@@ -53,10 +53,12 @@ namespace QuickJournal
             Navigation.PushAsync(page);
         }
 
-        private void NukeAll()
+        private void ClearAll()
         {
             _realm.WriteAsync(async (r) =>
             {
+                // pretend awaiting something like a slow download
+                // uncomment Task.Delay to cause exception "Cannot access a closed Realm" 
                 await Task.Delay(1000);
                 r.RemoveAll<JournalEntry>();
             });

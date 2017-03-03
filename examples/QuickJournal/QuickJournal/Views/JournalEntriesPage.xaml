@@ -4,7 +4,7 @@
 		x:Class="QuickJournal.JournalEntriesPage"
 		Title="Journal">
 	<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Nuke" Command="{Binding NukeAllCommand}" />
+        <ToolbarItem Text="Clear" Command="{Binding ClearAllCommand}" />
         <ToolbarItem Text="Add" Command="{Binding AddEntryCommand}" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
