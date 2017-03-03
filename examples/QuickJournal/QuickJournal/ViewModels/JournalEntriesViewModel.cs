@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Realms;
 using Xamarin.Forms;
@@ -18,6 +19,8 @@ namespace QuickJournal
 
         public ICommand AddEntryCommand { get; private set; }
 
+        public ICommand NukeAllCommand { get; private set; }
+
         public ICommand DeleteEntryCommand { get; private set; }
 
         public INavigation Navigation { get; set; }
@@ -30,6 +33,7 @@ namespace QuickJournal
 
             AddEntryCommand = new Command(AddEntry);
             DeleteEntryCommand = new Command<JournalEntry>(DeleteEntry);
+            NukeAllCommand = new Command(NukeAll);
         }
 
         private void AddEntry()
@@ -47,6 +51,15 @@ namespace QuickJournal
             var page = new JournalEntryDetailsPage(new JournalEntryDetailsViewModel(entry, transaction));
 
             Navigation.PushAsync(page);
+        }
+
+        private void NukeAll()
+        {
+            _realm.WriteAsync(async (r) =>
+            {
+                await Task.Delay(1000);
+                r.RemoveAll<JournalEntry>();
+            });
         }
 
         internal void EditEntry(JournalEntry entry)

@@ -4,7 +4,8 @@
 		x:Class="QuickJournal.JournalEntriesPage"
 		Title="Journal">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Add" Command="{Binding AddEntryCommand}" />
+        <ToolbarItem Text="Nuke" Command="{Binding NukeAllCommand}" />
+        <ToolbarItem Text="Add" Command="{Binding AddEntryCommand}" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<ListView ItemsSource="{Binding Entries}" x:Name="EntriesListView" ItemTapped="OnItemTapped" ItemSelected="OnItemSelected">
