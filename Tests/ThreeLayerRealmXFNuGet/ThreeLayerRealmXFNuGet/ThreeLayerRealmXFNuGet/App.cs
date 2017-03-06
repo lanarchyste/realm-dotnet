@@ -36,7 +36,7 @@ namespace ThreeLayerRealmXF {
             BindingContext = _model;
             var boundLabel = new Label
             {
-                XAlign = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = ""
             };
             boundLabel.SetBinding(Label.TextProperty, new Binding("TheAnswer"));
