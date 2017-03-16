@@ -125,11 +125,11 @@ stage('Build without sync') {
       nodeWithCleanup('windows') {
         getArchive()
 
-        bat """
-          "${tool 'msbuild'}" Realm.sln /p:Configuration=${configuration} /p:Platform=x86 /t:"Platform_Win32\\wrappers"
-          "${tool 'msbuild'}" Realm.sln /p:Configuration=${configuration} /p:Platform=x64 /t:"Platform_Win32\\wrappers"
-          "${tool 'msbuild'}" Realm.sln /p:Configuration=${configuration} /t:"Platform_Win32\\Tests_Win32"
-        """
+        dir('wrappers') {
+          cmake 'build-win32', 'build', [ 'CMAKE_GENERATOR_PLATFORM': 'Win32' ]
+          cmake 'build-x64', 'build', [ 'CMAKE_GENERATOR_PLATFORM': 'x64' ]
+        }
+        bat "\"${tool 'msbuild'}\" Realm.sln /p:Configuration=${configuration} /t:\"Platform_Win32\\Tests_Win32\""
 
         stash includes: 'wrappers/build/**/*.dll', name: 'win32-wrappers-nosync'
         stash includes: "Platform.Win32/Realm.Win32/bin/${configuration}/Realm.*", name: 'nuget-win32-database'
@@ -413,6 +413,24 @@ def xbuild(String arguments) {
       echo 'StyleCop crashed, no big deal.'
     } else {
       error("xbuild failed with exit code: ${exitCode}")
+    }
+  }
+}
+
+def cmake(String binaryDir, String installPrefix, Map arguments = [:]) {
+  def command = String.join(' ', arguments.collect { "-D${it.key}=\"${it.value}\"" })
+  def sourceDir = pwd()
+
+  def cmakeInvocation = """
+    "${tool 'cmake'}" -DCMAKE_INSTALL_PREFIX="${installPrefix}" ${command} "${sourceDir}"
+    "${tool 'cmake'}" --build .
+  """
+
+  dir(binaryDir) {
+    if (isUnix()) {
+      sh cmakeInvocation
+    } else {
+      bat cmakeInvocation
     }
   }
 }
