@@ -126,8 +126,8 @@ stage('Build without sync') {
         getArchive()
 
         dir('wrappers') {
-          cmake 'build-win32', 'build', [ 'CMAKE_GENERATOR_PLATFORM': 'Win32' ]
-          cmake 'build-x64', 'build', [ 'CMAKE_GENERATOR_PLATFORM': 'x64' ]
+          cmake 'build-win32', "${pwd()}\\build", configuration, [ 'CMAKE_GENERATOR_PLATFORM': 'Win32' ]
+          cmake 'build-x64', "${pwd()}\\build", configuration, [ 'CMAKE_GENERATOR_PLATFORM': 'x64' ]
         }
         bat "\"${tool 'msbuild'}\" Realm.sln /p:Configuration=${configuration} /t:\"Platform_Win32\\Tests_Win32\""
 
@@ -135,6 +135,17 @@ stage('Build without sync') {
         stash includes: "Platform.Win32/Realm.Win32/bin/${configuration}/Realm.*", name: 'nuget-win32-database'
         stash includes: "Platform.Win32/Tests.Win32/bin/${configuration}/**", name: 'win32-tests-nosync'
       }
+    },
+    'UWP': {
+        getArchive()
+
+        dir('wrappers') {
+          cmake 'build-win32', "${pwd()}\\build-uwp", configuration, [ 'CMAKE_GENERATOR_PLATFORM': 'Win32', 'CMAKE_SYSTEM_NAME': 'WindowsStore', 'CMAKE_SYSTEM_VERSION': '10.0' ]
+          cmake 'build-x64', "${pwd()}\\build-uwp", configuration, [ 'CMAKE_GENERATOR_PLATFORM': 'x64', 'CMAKE_SYSTEM_NAME': 'WindowsStore', 'CMAKE_SYSTEM_VERSION': '10.0' ]
+          cmake 'build-arm', "${pwd()}\\build-uwp", configuration, [ 'CMAKE_GENERATOR_PLATFORM': 'ARM', 'CMAKE_SYSTEM_NAME': 'WindowsStore', 'CMAKE_SYSTEM_VERSION': '10.0' ]
+        }
+
+        archive 'build-uwp'
     },
     'PCL': {
       nodeWithCleanup('xamarin-mac') {
@@ -417,13 +428,15 @@ def xbuild(String arguments) {
   }
 }
 
-def cmake(String binaryDir, String installPrefix, Map arguments = [:]) {
-  def command = String.join(' ', arguments.collect { "-D${it.key}=\"${it.value}\"" })
-  def sourceDir = pwd()
+def cmake(String binaryDir, String installPrefix, String configuration, Map arguments = [:]) {
+  def command = ''
+  for (arg in arguments) {
+    command += "-D${arg.key}=\"${arg.value}\" "
+  }
 
   def cmakeInvocation = """
-    "${tool 'cmake'}" -DCMAKE_INSTALL_PREFIX="${installPrefix}" ${command} "${sourceDir}"
-    "${tool 'cmake'}" --build .
+    "${tool 'cmake'}" -DCMAKE_INSTALL_PREFIX="${installPrefix}" ${command} "${pwd()}"
+    "${tool 'cmake'}" --build . --target install --config ${configuration}
   """
 
   dir(binaryDir) {
