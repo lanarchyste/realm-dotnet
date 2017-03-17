@@ -13,7 +13,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -46,20 +46,28 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <Reference Include="Realm">
-      <HintPath>..\..\..\Realm.PCL\bin\Debug\Realm.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>  
-  <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <Reference Include="Realm">
-      <HintPath>..\..\..\Realm.PCL\bin\Release\Realm.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Platform.PCL\Realm.PCL\Realm.PCL.csproj">
+      <Project>{261C8EB6-9508-4D6A-9BED-39A544AA2736}</Project>
+      <Name>Realm.PCL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Remotion.Linq">
+      <HintPath>..\packages\Remotion.Linq.2.1.1\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <!-- Puts a copy of RealmWeaver.Fody.dll where it will be found by Fody -->
+  <PropertyGroup>
+    <_RealmBasePath Condition="'$(_RealmBasePath)' == ''">$(MSBuildThisFileDirectory)../../../</_RealmBasePath>
+  </PropertyGroup>
+  <Target Name="CopyRealmWeaver" BeforeTargets="FodyTarget">
+    <Message Text="CopyRealmWeaver" />
+    <Error Text="Solution directory was not set. If you are building via xbuild, specify by adding a /p:SolutionDir=/path/to/solution/folder argument. See github.com/realm/realm-dotnet/issues/656" Condition="'$(SolutionDir)' == ''" />
+    <Copy SourceFiles="$(_RealmBasePath)Weaver\RealmWeaver.Fody\bin\Debug\RealmWeaver.Fody.dll" DestinationFolder="$(SolutionDir)Tools" />
+  </Target>
 </Project>

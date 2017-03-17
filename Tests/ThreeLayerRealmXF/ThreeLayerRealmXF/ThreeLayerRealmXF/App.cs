@@ -36,7 +36,7 @@ namespace ThreeLayerRealmXF {
             BindingContext = _model;
             var boundLabel = new Label
             {
-                XAlign = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = ""
             };
             boundLabel.SetBinding(Label.TextProperty, new Binding("TheAnswer"));
@@ -60,7 +60,7 @@ namespace ThreeLayerRealmXF {
                     VerticalOptions = LayoutOptions.Center,
                     Children = {
                         new Label {
-                            XAlign = TextAlignment.Center,
+                            HorizontalTextAlignment = TextAlignment.Center,
                             Text = "Welcome to ThreeLayer PCL in Forms!"
                         },
                         button,

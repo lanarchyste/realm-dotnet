@@ -92,15 +92,16 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\RealmWeaver\RealmWeaver.Fody.csproj">
-      <Project>{C3578A7B-09A6-4444-9383-0DEAFA4958BD}</Project>
-      <Name>RealmWeaver.Fody</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ThreeLayerRealmXF\ThreeLayerRealmXF.csproj">
+    <ProjectReference Include="../ThreeLayerRealmXF\ThreeLayerRealmXF.csproj">
       <Name>ThreeLayerRealmXF</Name>
       <Project>{4115119F-5DDD-4CCA-8A2F-5E9DFC906F35}</Project>
+    </ProjectReference>
+    <ProjectReference Include="../../../../Platform.XamarinIOS\Realm.XamarinIOS\Realm.XamarinIOS.csproj">
+      <Project>{A55BD773-5A29-4B2A-9DB7-1AB1DD38B537}</Project>
+      <Name>Realm.XamarinIOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -126,45 +127,67 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="DotNetCross.Memory.Unsafe, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\DotNetCross.Memory.Unsafe.0.2.2\lib\dotnet\DotNetCross.Memory.Unsafe.dll</HintPath>
+      <HintPath>../../../../packages\DotNetCross.Memory.Unsafe.0.2.2\lib\dotnet\DotNetCross.Memory.Unsafe.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Xamarin.Forms.Platform.iOS">
-      <HintPath>..\..\packages\Xamarin.Forms.2.0.1.6505\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\..\packages\Xamarin.Forms.2.0.1.6505\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\..\packages\Xamarin.Forms.2.0.1.6505\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>../../packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\..\packages\Xamarin.Forms.2.0.1.6505\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>../../packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
-    <Reference Include="Realm">
-      <HintPath>..\..\..\..\Realm.XamarinIOS\bin\iPhone\Debug\Realm.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Xamarin.Forms.Platform.iOS">
+      <HintPath>../../packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <Reference Include="Realm">
-      <HintPath>..\..\..\..\Realm.XamarinIOS\bin\iPhoneSimulator\Debug\Realm.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>../../packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-    <Reference Include="Realm">
-      <HintPath>..\..\..\..\Realm.XamarinIOS\bin\iPhone\Release\Realm.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
-    <Reference Include="Realm">
-      <HintPath>..\..\..\..\Realm.XamarinIOS\bin\iPhoneSimulator\Release\Realm.dll</HintPath>
+    <Reference Include="Remotion.Linq">
+      <HintPath>..\..\packages\Remotion.Linq.2.1.1\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="../../packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('../../packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+<!-- Copied in as if including Realm.Database.targets but only partly -->
+  <PropertyGroup>
+    <_RealmBasePath Condition="'$(_RealmBasePath)' == ''">$(MSBuildThisFileDirectory)..\..\..\..\</_RealmBasePath>
+  </PropertyGroup>
+  <UsingTask TaskName="RealmBuildTasks.WeaveRealmAssembly" AssemblyFile="$(_RealmBasePath)Weaver/Realm.BuildTasks/bin/Debug/Realm.BuildTasks.dll" />
+  <Target Name="WeaveRealmAssemblyTarget" AfterTargets="AfterCompile" BeforeTargets="DeployOutputFiles" Condition="'$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' AND '$(OutputType)' == 'Exe'">
+    <ItemGroup>
+      <FilteredReferences Include="@(ReferencePath)" Condition="('%(Filename)%(Extension)' == 'Realm.dll') Or ('%(Filename)%(Extension)' == 'Realm.Sync.dll')" />
+      <ReferencePath Remove="@(FilteredReferences)" />
+      <ReferenceCopyLocalPaths Remove="@(FilteredReferences)" />
+    </ItemGroup>
+    <RealmBuildTasks.WeaveRealmAssembly OutputDirectory="$(ProjectDir)$(OutputPath)" AssemblyName="$(AssemblyName)" IntermediateDirectory="$(ProjectDir)$(IntermediateOutputPath)" />
+  </Target>
+  <PropertyGroup>
+    <_wrappersPath Condition=" '$(Platform)' == 'iPhoneSimulator' ">$(_RealmBasePath)wrappers\build\$(Configuration)-iphonesimulator\</_wrappersPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_wrappersPath Condition=" '$(Platform)' == 'iPhone' ">$(_RealmBasePath)wrappers\build\$(Configuration)-iphoneos\</_wrappersPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <NativeReference Include="$(_wrappersPath)libwrappers.a">
+      <Kind>Static</Kind>
+      <SmartLink>True</SmartLink>
+      <IsCxx>True</IsCxx>
+      <LinkerFlags>-lz -framework Security</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="$(_wrappersPath)libwrappers-sync.a">
+      <Kind>Static</Kind>
+      <SmartLink>True</SmartLink>
+      <IsCxx>True</IsCxx>
+      <LinkerFlags>-lz -framework Security</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <!-- Puts a copy of RealmWeaver.Fody.dll where it will be found by Fody -->
+  <Target Name="CopyRealmWeaver" BeforeTargets="FodyTarget">
+    <Message Text="CopyRealmWeaver" />
+    <Error Text="Solution directory was not set. If you are building via xbuild, specify by adding a /p:SolutionDir=/path/to/solution/folder argument. See github.com/realm/realm-dotnet/issues/656" Condition="'$(SolutionDir)' == ''" />
+    <Copy SourceFiles="$(_RealmBasePath)Weaver\RealmWeaver.Fody\bin\Debug\RealmWeaver.Fody.dll" DestinationFolder="$(SolutionDir)Tools" />
+  </Target>
+<!-- End of inclusion from Realm.Database.targets -->
+  <Import Project="..\..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
 </Project>
