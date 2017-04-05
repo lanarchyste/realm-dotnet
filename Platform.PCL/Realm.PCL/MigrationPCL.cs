@@ -37,7 +37,6 @@ namespace Realms
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -50,14 +49,12 @@ namespace Realms
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
 
         private Migration()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
     }
 }

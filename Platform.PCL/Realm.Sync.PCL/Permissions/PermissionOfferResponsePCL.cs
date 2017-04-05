@@ -75,7 +75,6 @@ namespace Realms.Sync
         /// <param name="token">The token that was provided by the offering user.</param>
         public PermissionOfferResponse(string token)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
     }
 }

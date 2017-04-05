@@ -40,7 +40,6 @@ namespace Realms
         /// <returns>The collection, implementing <see cref="INotifyCollectionChanged"/>.</returns>
         public static IRealmCollection<T> AsRealmCollection<T>(this IQueryable<T> results) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -57,7 +56,6 @@ namespace Realms
         /// </returns>
         public static IDisposable SubscribeForNotifications<T>(this IQueryable<T> results, NotificationCallbackDelegate<T> callback) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -71,7 +69,6 @@ namespace Realms
         /// <returns>The collection, implementing <see cref="INotifyCollectionChanged"/>.</returns>
         public static IRealmCollection<T> AsRealmCollection<T>(this IList<T> list) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -88,7 +85,6 @@ namespace Realms
         /// </returns>
         public static IDisposable SubscribeForNotifications<T>(this IList<T> results, NotificationCallbackDelegate<T> callback) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -106,7 +102,6 @@ namespace Realms
         /// <exception cref="ArgumentOutOfRangeException">Thrown if the index is less than 0 or greater than <see cref="ICollection{T}.Count"/> - 1.</exception>
         public static void Move<T>(this IList<T> list, T item, int index) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -120,7 +115,6 @@ namespace Realms
         [Obsolete("Use .AsRealmCollection to get a collection that implements INotifyCollectionChanged. For error callback, use Realm.Error.")]
         public static INotifyCollectionChanged ToNotifyCollectionChanged<T>(this IOrderedQueryable<T> results, Action<Exception> errorCallback) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -136,7 +130,6 @@ namespace Realms
         [Obsolete("Use .AsRealmCollection to get a collection that implements INotifyCollectionChanged. For error callback, use Realm.Error.")]
         public static INotifyCollectionChanged ToNotifyCollectionChanged<T>(this IOrderedQueryable<T> results, Action<Exception> errorCallback, bool coalesceMultipleChangesIntoReset) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
     }

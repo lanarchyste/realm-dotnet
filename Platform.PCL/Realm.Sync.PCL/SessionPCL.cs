@@ -41,7 +41,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -54,7 +53,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return default(SessionState);
             }
         }
@@ -67,7 +65,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -83,7 +80,6 @@ namespace Realms.Sync
         /// </remarks>
         public static void Reconnect()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -131,7 +127,6 @@ namespace Realms.Sync
         /// </example>
         public IObservable<SyncProgress> GetProgressObservable(ProgressDirection direction, ProgressMode mode)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
     }

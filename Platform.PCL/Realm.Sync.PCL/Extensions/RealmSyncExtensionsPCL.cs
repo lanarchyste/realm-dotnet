@@ -36,7 +36,6 @@ namespace Realms.Sync
         /// <exception cref="ArgumentException">Thrown if <c>realm</c> was not created with a <see cref="SyncConfiguration"/> object.</exception>
         public static Session GetSession(this Realm realm)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
     }

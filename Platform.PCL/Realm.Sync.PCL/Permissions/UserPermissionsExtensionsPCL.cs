@@ -38,7 +38,6 @@ namespace Realms.Sync
         /// <returns>A Realm that can be used to control access and permissions for Realms owned by the user.</returns>
         public static Realm GetManagementRealm(this User user)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -53,7 +52,6 @@ namespace Realms.Sync
         /// <returns>A Realm that can be used to inspect access to other Realms.</returns>
         public static Realm GetPermissionRealm(this User user)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
     }

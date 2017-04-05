@@ -36,7 +36,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -49,7 +48,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -62,7 +60,6 @@ namespace Realms.Sync
         /// <param name="optionalPath">Path to the realm, must be a valid full path for the current platform, relative subdirectory, or just filename.</param>
         public SyncConfiguration(User user, Uri serverUri, string optionalPath = null)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
     }
 }

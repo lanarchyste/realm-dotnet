@@ -41,7 +41,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -54,7 +53,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -67,7 +65,6 @@ namespace Realms.Sync
         /// <returns>An awaitable Task, that, upon completion, contains the logged in user.</returns>
         public static Task<User> LoginAsync(Credentials credentials, Uri serverUrl)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -88,7 +85,6 @@ namespace Realms.Sync
         /// </remarks>
         public static void ConfigurePersistence(UserPersistenceMode mode, byte[] encryptionKey = null, bool resetOnError = false)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         #endregion
@@ -102,7 +98,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -116,7 +111,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -129,7 +123,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -142,7 +135,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return default(UserState);
             }
         }
@@ -155,7 +147,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return false;
             }
         }
@@ -165,13 +156,11 @@ namespace Realms.Sync
         /// </summary>
         public void LogOut()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <inheritdoc />
         public bool Equals(User other)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return false;
         }
     }

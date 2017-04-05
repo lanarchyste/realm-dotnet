@@ -99,7 +99,6 @@ namespace Realms.Sync
         /// <param name="mayManage">Define manage access. <c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</param>
         public PermissionChange(string userId, string realmUrl, bool? mayRead = null, bool? mayWrite = null, bool? mayManage = null)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
     }
 }

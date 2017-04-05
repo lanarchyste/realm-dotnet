@@ -78,13 +78,11 @@ namespace Realms
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();  // if attempt to use DefaultConfiguration as first line of their code with just PCL linked, want exception!
                 return null;
             }
 
             set
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             }
         }
 
@@ -103,7 +101,6 @@ namespace Realms
         /// <param name="newConfigPath">Path to the realm, must be a valid full path for the current platform, relative subdirectory, or just filename.</param>
         public RealmConfiguration ConfigWithPath(string newConfigPath)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
     }

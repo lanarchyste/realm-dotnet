@@ -37,7 +37,6 @@ namespace Realms
         /// </summary>
         public void Dispose()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -46,7 +45,6 @@ namespace Realms
         /// </summary>
         public void Rollback()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -55,7 +53,6 @@ namespace Realms
         /// </summary>
         public void Commit()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
     }
 }

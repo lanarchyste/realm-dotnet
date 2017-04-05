@@ -52,7 +52,6 @@ namespace Realms
         /// <returns>A <see cref="ThreadSafeReference"/> that can be passed to <c>Realm.ResolveReference(ThreadSafeReference.Query)</c> on a different thread.</returns>
         public static Query<T> Create<T>(IQueryable<T> value) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -64,7 +63,6 @@ namespace Realms
         /// <returns>A <see cref="ThreadSafeReference"/> that can be passed to <c>Realm.ResolveReference(ThreadSafeReference.Object)</c> on a different thread.</returns>
         public static Object<T> Create<T>(T value) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -79,7 +77,6 @@ namespace Realms
         /// <returns>A <see cref="ThreadSafeReference"/> that can be passed to<c>Realm.ResolveReference(ThreadSafeReference.List)</c> on a different thread.</returns>
         public static List<T> Create<T>(IList<T> value) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 

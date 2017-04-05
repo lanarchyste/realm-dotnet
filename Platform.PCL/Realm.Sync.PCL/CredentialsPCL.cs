@@ -34,7 +34,6 @@ namespace Realms.Sync
         /// <returns>An instance of <see cref="Credentials"/> that can be used in <see cref="User.LoginAsync"/></returns>
         public static Credentials Custom(string identityProvider, string userIdentifier, IDictionary<string, object> userInfo)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -44,7 +43,6 @@ namespace Realms.Sync
         /// <returns>An instance of <see cref="Credentials"/> that can be used in <see cref="User.LoginAsync"/></returns>
         public static Credentials Debug()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -55,7 +53,6 @@ namespace Realms.Sync
         /// <returns>An instance of <see cref="Credentials"/> that can be used in <see cref="User.LoginAsync"/></returns>
         public static Credentials Facebook(string facebookToken)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -66,7 +63,6 @@ namespace Realms.Sync
         /// <returns>An instance of <see cref="Credentials"/> that can be used in <see cref="User.LoginAsync"/></returns>
         public static Credentials Google(string googleToken)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -79,7 +75,6 @@ namespace Realms.Sync
         /// <returns>An instance of <see cref="Credentials"/> that can be used in <see cref="User.LoginAsync"/></returns>
         public static Credentials UsernamePassword(string username, string password, bool createUser)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -90,7 +85,6 @@ namespace Realms.Sync
         /// <returns>An instance of <see cref="Credentials"/> that can be used in <see cref="User.LoginAsync"/></returns>
         public static Credentials AzureAD(string adToken)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -102,7 +96,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -115,7 +108,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }
@@ -128,7 +120,6 @@ namespace Realms.Sync
         {
             get
             {
-                RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
                 return null;
             }
         }

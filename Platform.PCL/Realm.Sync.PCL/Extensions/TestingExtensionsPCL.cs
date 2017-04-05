@@ -39,7 +39,6 @@ namespace Realms.Sync.Testing
         /// </remarks>
         public static void SimulateError(this Session session, ErrorCode errorCode, string message, bool isFatal = false)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -58,7 +57,6 @@ namespace Realms.Sync.Testing
                                             ulong downloadedBytes, ulong downloadableBytes,
                                             ulong uploadedBytes, ulong uploadableBytes)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
     }
 }

@@ -41,7 +41,6 @@ namespace Realms.Schema
 
         private ObjectSchema()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -54,7 +53,6 @@ namespace Realms.Schema
         /// <param name="property"><see cref="Property"/> returned only if found matching Name.</param>
         public bool TryFindProperty(string name, out Property property)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             property = new Property();
             return false;
         }
@@ -62,7 +60,6 @@ namespace Realms.Schema
         /// <inheritdoc/>
         public IEnumerator<Property> GetEnumerator()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -78,7 +75,6 @@ namespace Realms.Schema
         /// <param name="type">Type of a <see cref="RealmObject"/> descendant for which you want a schema.</param>
         public static ObjectSchema FromType(Type type)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
     }

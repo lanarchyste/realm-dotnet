@@ -77,7 +77,6 @@ namespace Realms
         /// <returns>A full path including name of Realm file.</returns>
         public static string GetPathToRealm(string optionalPath = null)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return string.Empty;
         }
     }

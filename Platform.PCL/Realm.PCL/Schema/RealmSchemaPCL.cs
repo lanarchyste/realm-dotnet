@@ -47,12 +47,10 @@ namespace Realms.Schema
         /// <exception cref="NotSupportedException">Thrown if the schema has already materialized.</exception>
         public static void AddDefaultTypes(IEnumerable<Type> types)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         private RealmSchema()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -63,14 +61,12 @@ namespace Realms.Schema
         /// <returns>An <see cref="ObjectSchema"/> or <c>null</c> to indicate not found.</returns>
         public ObjectSchema Find(string name)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
         /// <inheritdoc/>
         public IEnumerator<ObjectSchema> GetEnumerator()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 

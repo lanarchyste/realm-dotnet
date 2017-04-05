@@ -59,7 +59,6 @@ namespace Realms
         /// </exception>
         public static Realm GetInstance(string databasePath)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -73,7 +72,6 @@ namespace Realms
         /// </exception>
         public static Realm GetInstance(RealmConfigurationBase config = null)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -90,7 +88,6 @@ namespace Realms
         /// <returns><c>true</c> if successful, <c>false</c> if any file operation failed.</returns>
         public static bool Compact(RealmConfigurationBase config = null)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return false;
         }
 
@@ -100,7 +97,6 @@ namespace Realms
         /// <param name="configuration">A <see cref="RealmConfigurationBase"/> which supplies the realm path.</param>
         public static void DeleteRealm(RealmConfigurationBase configuration)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         #endregion
@@ -146,7 +142,6 @@ namespace Realms
         /// </summary>
         public void Dispose()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -159,7 +154,6 @@ namespace Realms
         /// <param name="other">The Realm to compare with the current Realm.</param>
         public bool IsSameInstance(Realm other)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return false;
         }
 
@@ -185,7 +179,6 @@ namespace Realms
         /// </remarks>
         public dynamic CreateObject(string className)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -214,7 +207,6 @@ namespace Realms
         /// <returns>The passed object, so that you can write <c>var person = realm.Add(new Person { Id = 1 });</c></returns>
         public T Add<T>(T obj, bool update = false) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return default(T);
         }
 
@@ -238,7 +230,6 @@ namespace Realms
         /// <returns>The passed object.</returns>
         public RealmObject Add(RealmObject obj, bool update = false)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -260,7 +251,6 @@ namespace Realms
         /// <returns>A transaction in write mode, which is required for any creation or modification of objects persisted in a <see cref="Realm"/>.</returns>
         public Transaction BeginWrite()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -291,7 +281,6 @@ namespace Realms
         /// </param>
         public void Write(Action action)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -330,7 +319,6 @@ namespace Realms
         /// <returns>An awaitable <see cref="Task"/>.</returns>
         public Task WriteAsync(Action<Realm> action)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -342,7 +330,6 @@ namespace Realms
         /// </returns>
         public bool Refresh()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return false;
         }
 
@@ -353,7 +340,6 @@ namespace Realms
         /// <returns>A queryable collection that without further filtering, allows iterating all objects of class T, in this <see cref="Realm"/>.</returns>
         public IQueryable<T> All<T>() where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -365,7 +351,6 @@ namespace Realms
         /// <returns>A queryable collection that without further filtering, allows iterating all objects of className, in this realm.</returns>
         public IQueryable<dynamic> All(string className)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -383,7 +368,6 @@ namespace Realms
         /// </exception>
         public T Find<T>(long? primaryKey) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -398,7 +382,6 @@ namespace Realms
         /// </exception>
         public T Find<T>(string primaryKey) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -416,7 +399,6 @@ namespace Realms
         /// </exception>
         public RealmObject Find(string className, long? primaryKey)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -431,7 +413,6 @@ namespace Realms
         /// </exception>
         public RealmObject Find(string className, string primaryKey)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -446,7 +427,6 @@ namespace Realms
         /// <exception cref="ArgumentException">If you pass a standalone object.</exception>
         public void Remove(RealmObject obj)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -463,7 +443,6 @@ namespace Realms
         /// <exception cref="ArgumentNullException">If <c>range</c> is <c>null</c>.</exception>
         public void RemoveRange<T>(IQueryable<T> range)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -478,7 +457,6 @@ namespace Realms
         /// </exception>
         public void RemoveAll<T>() where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -493,7 +471,6 @@ namespace Realms
         /// </exception>
         public void RemoveAll(string className)
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -504,7 +481,6 @@ namespace Realms
         /// </exception>
         public void RemoveAll()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         #region Thread Handover
@@ -521,7 +497,6 @@ namespace Realms
         /// </returns>
         public T ResolveReference<T>(ThreadSafeReference.Object<T> reference) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -537,7 +512,6 @@ namespace Realms
         /// </returns>
         public IList<T> ResolveReference<T>(ThreadSafeReference.List<T> reference) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -550,7 +524,6 @@ namespace Realms
         /// <returns>A thread-confined instance of the original <see cref="IQueryable{T}"/> resolved for the current thread.</returns>
         public IQueryable<T> ResolveReference<T>(ThreadSafeReference.Query<T> reference) where T : RealmObject
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 
@@ -632,7 +605,6 @@ namespace Realms
         [Obsolete("This method has been deprecated. Instead, dispose the realm to close it.")]
         public void Close()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
         }
 
         /// <summary>
@@ -645,7 +617,6 @@ namespace Realms
         [Obsolete("Please create an object with new and pass to Add instead")]
         public T CreateObject<T>() where T : RealmObject, new()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return null;
         }
 

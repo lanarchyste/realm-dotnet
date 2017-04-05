@@ -40,7 +40,6 @@ namespace Realms.Sync.Exceptions
         /// <returns><c>true</c> if actions were run successfully, <c>false</c> otherwise.</returns>
         public bool InitiateClientReset()
         {
-            RealmPCLHelpers.ThrowProxyShouldNeverBeUsed();
             return false;
         }
     }
