@@ -1,6 +1,6 @@
 ﻿////////////////////////////////////////////////////////////////////////////
 //
-// Copyright 2016 Realm Inc.
+// Copyright 2017 Realm Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,27 +16,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-using System.Reflection;
+using UIKit;
 
-using Android.App;
-using Android.OS;
-using Xamarin.Android.NUnitLite;
-
-namespace IntegrationTests.XamarinAndroid
+namespace Tests
 {
-    [Activity(Label = "IntegrationTests.XamarinAndroid", MainLauncher = true)]
-    public class MainActivity : TestSuiteActivity
+    public class Application
     {
-        protected override void OnCreate(Bundle bundle)
+        private static void Main(string[] args)
         {
-            // tests can be inside the main assembly
-            AddTest(Assembly.GetExecutingAssembly());
-
-            // or in any reference assemblies
-            // AddTest (typeof (Your.Library.TestClass).Assembly);
-
-            // Once you called base.OnCreate(), you cannot add more assemblies.
-            base.OnCreate(bundle);
+            UIApplication.Main(args, null, "AppDelegate");
         }
     }
 }

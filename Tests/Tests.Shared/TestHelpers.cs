@@ -19,8 +19,11 @@
 using System;
 using System.IO;
 using Realms;
+#if __ANDROID__
+using Application = Android.App.Application;
+#endif
 
-namespace IntegrationTests
+namespace Tests
 {
     public static class TestHelpers
     {
@@ -46,15 +49,12 @@ namespace IntegrationTests
             destPath = RealmConfigurationBase.GetPathToRealm(destPath);  // any relative subdir or filename works
 
 #if __ANDROID__
-            using (var asset = Android.App.Application.Context.Assets.Open(realmName))
+            using (var asset = Application.Context.Assets.Open(realmName))
             using (var destination = File.OpenWrite(destPath))
             {
                 asset.CopyTo(destination);
             }
-
-            return;
-#endif
-
+#else
 #if __IOS__
             var sourceDir = Foundation.NSBundle.MainBundle.BundlePath;
 #else
@@ -62,6 +62,7 @@ namespace IntegrationTests
 #endif
 
             File.Copy(Path.Combine(sourceDir, realmName), destPath, overwrite);
+#endif
         }
     }
 }

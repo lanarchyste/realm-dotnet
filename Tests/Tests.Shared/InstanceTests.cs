@@ -26,15 +26,16 @@ using NUnit.Framework;
 using Realms;
 using Realms.Exceptions;
 
-namespace IntegrationTests
+namespace Tests.Database
 {
     [TestFixture, Preserve(AllMembers = true)]
     public class InstanceTests : RealmTest
     {
         private const string SpecialRealmName = "EnterTheMagic.realm";
 
-        public override void TearDown()
+        protected override void CustomTearDown()
         {
+            base.CustomTearDown();
             Realm.DeleteRealm(RealmConfiguration.DefaultConfiguration);
             var uniqueConfig = new RealmConfiguration(SpecialRealmName);  // for when need 2 realms or want to not use default
             Realm.DeleteRealm(uniqueConfig);
@@ -291,16 +292,25 @@ namespace IntegrationTests
 #endif
         public void Compact_WhenOpenOnDifferentThread_ShouldReturnFalse()
         {
-            using (var realm = Realm.GetInstance())
+            AsyncContext.Run(async () =>
             {
-                AddDummyData(realm);
+                using (var realm = Realm.GetInstance())
+                {
+                    AddDummyData(realm);
 
-                var initialSize = new FileInfo(realm.Config.DatabasePath).Length;
-                Assert.That(() => Task.Run(() => Realm.Compact(realm.Config)).Result, Is.False);
-                var finalSize = new FileInfo(realm.Config.DatabasePath).Length;
+                    var initialSize = new FileInfo(realm.Config.DatabasePath).Length;
+                    bool? isCompacted = null;
+                    await Task.Run(() =>
+                    {
+                        isCompacted = Realm.Compact(realm.Config);
+                    });
 
-                Assert.That(finalSize, Is.EqualTo(initialSize));
-            }
+                    Assert.That(isCompacted, Is.False);
+                    var finalSize = new FileInfo(realm.Config.DatabasePath).Length;
+
+                    Assert.That(finalSize, Is.EqualTo(initialSize));
+                }
+            });
         }
 
         [Test, Ignore("Currently doesn't work. Ref #947")]

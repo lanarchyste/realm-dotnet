@@ -1,3 +1,15 @@
+1.2.1 (2017-05-01)
+------------------
+
+### Bug fixes
+- Fixed an issue where `EntryPointNotFoundException` would be thrown on some Android devices. (#1336)
+
+### Enhancements
+- Expose `IRealmCollection.IsValid` to indicate whether the realm collection is valid to use. (#1344)
+- Update the Fody reference which adds support for building with Mono 5. (#1364)
+
+### Breaking Changes
+
 1.2.0 (2017-04-04)
 ------------------
 
